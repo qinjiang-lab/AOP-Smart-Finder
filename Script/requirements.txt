@@ -3,3 +3,4 @@ pandas
 networkx
 openpyxl
 lxml
+python-calamine
