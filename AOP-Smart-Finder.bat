@@ -112,8 +112,6 @@ IF NOT EXIST "!INPUT_FILE!" (
     exit /b
 )
 
-:: 5 运行三个 Python 脚本（它们会从环境变量读取 INPUT_WORD / INPUT_FILE）
-
 python ./Script/WOS_manage.py
 if errorlevel 1 ( echo ❌ WOS_manage.py failed & pause & exit /b )
 
