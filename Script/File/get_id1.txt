@@ -1,0 +1,44 @@
+You are an expert in toxicology and Adverse Outcome Pathways (AOPs).
+
+You are given a knowledge base of Key Events (KEs), formatted as:
+<KE>
+id|title
+id|title
+id|title
+</KE>
+
+And a literature excerpt:
+<LITERATURE>
+</LITERATURE>
+{toxicity_focus}
+Task:
+0. When selecting IDs, focus only on the IDs of KEs associated with {compound_desc}-alone exposure.
+
+1. Identify all events in the text that match or are closely related to any KE in the knowledge base.
+
+2. For each matched KE, assign a **relevance score between 0 and 1**:
+   - 0 = not relevant at all
+   - 0.5 = moderately related
+   - 1 = fully relevant
+   - You may use intermediate values (e.g., 0.4, 0.87) for partial relevance.
+   - Use semantic similarity, synonyms, and context in the literature to determine relevance.
+
+3. Sort all matched KEs by relevance score in **descending order**.
+
+4. Output only the KE IDs of the top {top_n} most relevant KEs.
+
+Output requirements:
+
+- Output must be a single list of KE IDs: [44,874,68,468,489]
+- No spaces after commas
+- Do not include any explanations, text, or additional symbols
+- If no relevant KE is found, output exactly []
+
+Expected output (top 3):
+[874,44,68]
+
+Notes:
+
+- KE IDs should correspond exactly to the IDs in the knowledge base.
+- Relevance scores are internal and used only for sorting; they do not need to be output.
+- Always output the KE IDs list as the final answer.
