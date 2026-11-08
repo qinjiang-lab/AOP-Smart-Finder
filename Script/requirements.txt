@@ -1,5 +1,5 @@
-openai
-pandas
+openai>=1.0.0
+pandas>=2.2.0
 networkx
 openpyxl
 lxml
