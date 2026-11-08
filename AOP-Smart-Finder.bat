@@ -9,11 +9,7 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 python --version >nul 2>&1
 IF ERRORLEVEL 1 (
     echo.
-    echo ❌ Python is not installed or not in PATH.
-    echo    Please install Python 3.8+ from:
-    echo      https://www.python.org/downloads/
-    echo    IMPORTANT: During installation, check "Add Python to PATH".
-    echo.
+    echo Python is not installed or not in PATH.
     pause
     exit /b
 )
@@ -30,7 +26,7 @@ IF ERRORLEVEL 1 (
     python -m pip install -r "./Script/requirements.txt"
     IF ERRORLEVEL 1 (
         echo.
-        echo ❌ Failed to install dependencies.
+        echo    Failed to install dependencies.
         echo    Please check your network / pip configuration, or run manually:
         echo      python -m pip install -r "./Script/requirements.txt"
         pause
@@ -64,7 +60,7 @@ set INPUT_WORD=!INPUT_WORD!
 :: 1 Check if Python is installed
 python --version >nul 2>&1
 IF ERRORLEVEL 1 (
-    echo ❌ Python is not installed. Please install Python first.
+    echo  Python is not installed. Please install Python first.
     pause
     exit /b
 )
@@ -81,7 +77,7 @@ IF NOT EXIST "./File/AOP-Smart.json" (
         echo Running XML_analysis.py ...
         python ./Script/XML_analysis.py
     ) ELSE (
-        echo ❌ aop-wiki.xml not found. Cannot continue.
+        echo  aop-wiki.xml not found. Cannot continue.
         pause
         exit /b
     )
@@ -90,17 +86,13 @@ IF NOT EXIST "./File/AOP-Smart.json" (
 :: 4 Check input file
 set "INPUT_FILE=!INPUT_WORD!"
 
-:: 检查输入是否已经包含了 .xls 或 .xlsx 后缀
 if /I not "!INPUT_FILE:~-4!"==".xls" if /I not "!INPUT_FILE:~-5!"==".xlsx" (
-    :: 如果没有后缀，先尝试找 .xls
     if exist "!INPUT_WORD!.xls" (
         set "INPUT_FILE=!INPUT_WORD!.xls"
     ) else (
-        :: 如果 .xls 也没有，再尝试找 .xlsx
         if exist "!INPUT_WORD!.xlsx" (
             set "INPUT_FILE=!INPUT_WORD!.xlsx"
         ) else (
-            :: 如果两个都没有，默认还是拼上 .xls，留给下一步报错
             set "INPUT_FILE=!INPUT_WORD!.xls"
         )
     )
@@ -113,15 +105,15 @@ IF NOT EXIST "!INPUT_FILE!" (
 )
 
 python ./Script/WOS_manage.py
-if errorlevel 1 ( echo ❌ WOS_manage.py failed & pause & exit /b )
+if errorlevel 1 ( echo WOS_manage.py failed & pause & exit /b )
 
 
 python ./Script/AOP-Smart-Finder.py
-if errorlevel 1 ( echo ❌ AOP-Smart-Finder.py failed & pause & exit /b )
+if errorlevel 1 ( echo AOP-Smart-Finder.py failed & pause & exit /b )
 
 
 python ./Script/visual.py
-if errorlevel 1 ( echo ❌ visual.py failed & pause & exit /b )
+if errorlevel 1 ( echo visual.py failed & pause & exit /b )
 
 
 echo All done!
