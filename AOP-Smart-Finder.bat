@@ -53,7 +53,7 @@ echo ----------------------------------------------------
 for %%f in (*.xlsx *.xls) do echo   -^> %%~nf
 echo ====================================================
 echo.
-set /p INPUT_WORD=Please type the EXACT compound name from the list above (WITHOUT .xlsx): 
+set /p INPUT_WORD=Please enter the name of the file you want to process (WITHOUT .xlsx): 
 
 set INPUT_WORD=!INPUT_WORD!
 
