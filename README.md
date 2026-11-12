@@ -117,3 +117,4 @@ Write the prompt as **a single line without line breaks**, then wait for the res
 - The design of the Web of Science search query is very important at the initial literature retrieval stage.
 - AOP-Smart-Finder currently supports **Windows only**.
 - Commercial LLM usage may incur costs. Please check the provider’s pricing and rate limits before running large-scale analyses.
+- * **Cost Estimation:** Using the `deepseek-flash` model, processing **10,000** literature abstracts (initial screening) and extracting KERs from **1,000** accepted articles costs approximately **$15–$20 USD**.
