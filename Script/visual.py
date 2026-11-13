@@ -455,7 +455,7 @@ for (source, target), supporting_articles in edge_articles.items():
         "Target": target,
         "Count": len(support_uts),
         "Species": "; ".join(species_values),
-        "Verification": "No",
+        "Verification_Status": "Not_checked",
         "_UTs": support_uts,
         "_Identifiers": identifiers
     })
@@ -613,7 +613,7 @@ base_headers = [
     "Target",
     "Count",
     "Species",
-    "Verification"
+    "Verification_Status"
 ]
 
 all_headers = base_headers + doi_headers
@@ -632,7 +632,7 @@ def make_edge_dataframe(records):
             "Target": record["Target"],
             "Count": record["Count"],
             "Species": record["Species"],
-            "Verification": record["Verification"]
+            "Verification_Status": record["Verification_Status"]
         }
 
         identifiers = record["_Identifiers"]
